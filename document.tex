@@ -1,0 +1,72 @@
+\documentclass[11pt, letter]{article}
+\usepackage[margin=0.75in, includehead, ]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{outlines,enumitem }
+\usepackage{hyperref}
+\usepackage{placeins} % FloatBarrier force new section after an image
+\usepackage{fancyhdr}
+\usepackage{mleftright}
+
+% -- upper right corner main info
+\newcommand{\courseinfo}[2]{
+	% ----- header related ------
+	\fancyhf{}
+	\rhead{Your Name}
+	\lhead{#1}
+	\chead{#2}
+	\cfoot{\thepage}
+	\pagestyle{fancy}
+	\thispagestyle{plain} % first page no header 
+	
+\begin{flushright}
+	#1 \\
+	Your Name  \\
+	\today
+\end{flushright}
+\begin{center}
+	\large#2
+\end{center}
+}
+
+\setlength{\jot}{15pt} % vertical space between math
+\setlength\parindent{0pt} % no indent
+\setcounter{secnumdepth}{0} % no section counting
+\delimitershortfall=-1pt
+%\mleftright % make \left & \right behave like \mleft & \mright 
+ % ---------------
+ % Macro 
+ 
+%  -- add parentheses in fraction espression if there is a superscript. 
+ \makeatletter
+ \let\old@frac=\frac
+ \def\frac#1#2{%
+ 	\@ifnextchar^
+ 	{\left(\old@frac{#1}{#2}\right)}
+ 	{\old@frac{#1}{#2}}%
+ }
+ 
+ \let\old@dfrac=\dfrac
+ \def\dfrac#1#2{%
+ 	\@ifnextchar^
+ 	{\left(\old@dfrac{#1}{#2}\right)}
+ 	{\old@dfrac{#1}{#2}}%
+ }
+ 
+ \makeatother
+ % -----------------
+ 
+ 
+\begin{document}
+\courseinfo{Course info}{Homework }
+  
+ \newpage
+ \section{Part 2}
+ \begin{outline}
+ 	\1 item 1 
+ 	\1 item 2 
+ 		\2 item * 
+ \end{outline}
+\end{document}
